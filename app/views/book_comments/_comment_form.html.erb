@@ -1,0 +1,6 @@
+<%= form_with model:[book,book_comment],local:false do |f| %>
+  <div class="form-group">
+    <%= f.text_area:comment ,class:"form-control form-control-lg border-dark" %>
+  </div>
+    <%= f.submit "送信" %>
+<% end %>

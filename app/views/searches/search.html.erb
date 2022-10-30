@@ -1,0 +1,42 @@
+<% if @model=='user' %>
+  <h1>Users search for "<%= @content %>"</h1>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Introduction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image %></td>
+        <td><%= link_to user.name,user_path(user.id) %></td>
+        <td><%= user.introduction %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h1>Books search for "<%= @content %>"</h1>
+    <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |book| %>
+      <tr>
+        <td><%= image_tag book.user.get_profile_image %></td>
+        <td><%= link_to book.title,book_path(book.id) %></td>
+        <td><%= book.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
