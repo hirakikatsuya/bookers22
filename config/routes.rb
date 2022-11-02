@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     get "search_count"=>"users#search_count"
   end
 
+  resources :chats,only:[:show,:create]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
