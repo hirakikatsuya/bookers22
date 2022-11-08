@@ -26,6 +26,10 @@ class Book < ApplicationRecord
     end
   end
 
+  scope:latest,->{order(created_at: :desc)}
+  scope:old,->{order(created_at: :asc)}
+  scope:star_count,->{order(star: :desc)}
+
   scope:created_today,->{where(created_at:Time.zone.now.all_day)}
   scope:created_yesterday,->{where(created_at:1.day.ago.all_day)}
   scope:created_two_days_ago,->{where(created_at:2.days.ago.all_day)}
