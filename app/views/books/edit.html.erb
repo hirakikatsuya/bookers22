@@ -12,6 +12,7 @@
           <p>Opinion</p>
           <%= f.text_area:body,class:"form-control" %>
         </div>
+        <div><%= render "books/star-rate",book:@book %></div>
         <div class="form-group">
           <%= f.submit "Update Book",class:"btn btn-md btn-success" %>
         </div>

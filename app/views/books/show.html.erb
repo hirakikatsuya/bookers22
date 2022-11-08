@@ -22,6 +22,7 @@
             </td>
           <td>コメント数:<span id="comment_count"><%= render 'book_comments/comment_count',book:@book %></span></td>
           <td>閲覧数:<%= @book_detail.view_counts.count %></td>
+          <td><%= render "books/star-rate",book:@book %></td>
           <% if @book.user==current_user %>
             <td><%= link_to "Edit",edit_book_path(@book.id),class:"btn btn-sm btn-success" %></td>
             <td><%= link_to "Destroy",book_path(@book.id),method: :delete,"data-confirm"=>"本当に消しますか？",class:"btn btn-sm btn-danger" %></td>

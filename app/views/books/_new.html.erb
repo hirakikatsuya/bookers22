@@ -8,7 +8,27 @@
     <p>Opinion</p>
     <%= f.text_area:body,class:"form-control" %>
   </div>
+  <div class="form-group" id="star">
+    <%= f.label "Rate" %>
+    <%= f.hidden_field :star, id: :review_star %>
+  </div>
+  <script>
+    // scriptファイルをどのidの部分に配置するかを指定
+    $('#star').empty();
+    let elem = document.querySelector('#star');
+    let opt = {
+      //星画像の指定などのオプションをここに記述,
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'book[star]',
+      half      : false
+     };
+    raty(elem,opt);
+  </script>
+
   <div class="form-group">
     <%= f.submit "Create Book",class:"text-light btn btn-sm btn-success" %>
   </div>
+
 <% end %>
