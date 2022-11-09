@@ -6,12 +6,18 @@ class Book < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many:book_comments
   has_many:view_counts
+  has_many:book_tags,dependent: :destroy
+  has_many:tags,through: :book_tags
 
   validates:title,presence:true
   validates:body,{presence:true,length:{maximum:200}}
 
   def favorited_by?(user)
     favorites.exists?(user_id:user.id)
+  end
+
+  def self.search(search_word)
+    Book.where(['tag LIKE?',"#{search_word}"])
   end
 
   def self.search_for(content,method)
